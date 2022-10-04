@@ -1,7 +1,9 @@
 # 2D-IK
 
 
-# <center  align="center">W.I.P</center>
+# <p align="center">
+W.I.P
+</p>
 
 
 <p>
