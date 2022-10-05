@@ -14,27 +14,30 @@ class Arm(object):
 
     def GetEndX(self):
         angle = self.angle
-        parent = self.parent
-        while(parent):
-            angle += parent.angle
-            parent = parent.parent
         endx = self.x + math.cos(angle) * self.leng
         return endx
 
     def GetEndY(self):
         angle = self.angle
-        parent = self.parent
-        while(parent):
-            angle += parent.angle
-            parent = parent.parent
         endy = self.y + math.sin(angle) * self.leng
         return endy
 
     def EndFactorAngle(self,x,y):
-        dx =  x - self.x 
-        dy = y - self.y
-        angle = math.atan2(dy,dx)
-        return angle
+        if (x is not None) and (y is not None):
+            dx =  x - self.x 
+            dy = y - self.y
+            self.angle = math.atan2(dy,dx)
+        else: return 0
+
+    def Drag(self,x,y):
+        if (x is not None) and (y is not None):
+            self.EndFactorAngle(x,y)
+            print(self.angle)
+            self.x = x - math.cos(self.angle) * self.leng
+            self.y = y - math.sin(self.angle) * self.leng
+            if(self.parent):
+                self.parent.Drag(self.x,self.y)
+            
         
 
    
