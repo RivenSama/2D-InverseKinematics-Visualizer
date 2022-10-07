@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 from Arm import Arm
 from ArmLinker import ArmLinker
 
+armLinker = ArmLinker(0,0)
+armLinker.AddArm(10)
+armLinker.AddArm(5)
+armLinker.AddArm(2)
 
 
 def onclick(event):
@@ -12,16 +16,13 @@ def onclick(event):
 
 
     plt.cla()
-    plt.clf()
+
     plt.axis([-20, 20, -20, 20])
     plt.grid(['both'])
     
     
-    armLinker = ArmLinker(0,0)
-    armLinker.AddArm(10)
-    armLinker.AddArm(5)
-    armLinker.AddArm(2)
-    armLinker.Drag(event.xdata,event.ydata)
+
+    armLinker.Reach(event.xdata,event.ydata)
     for i in armLinker.armSeg:
         
         plt.scatter([i.x, i.GetEndX()],[i.y,i.GetEndY()])
