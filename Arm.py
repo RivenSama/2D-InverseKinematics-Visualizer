@@ -14,6 +14,7 @@ class Arm(object):                                                  #This class 
 
     def GetEndX(self):
         angle = self.angle
+        
         endx = self.x + math.cos(angle) * self.leng             #This function returns the ending X where the segment points                                                           
         return endx                                             # Used to plot the arm segment and other calculations
 
@@ -27,6 +28,7 @@ class Arm(object):                                                  #This class 
             dx =  x - self.x 
             dy = y - self.y
             self.angle = math.atan2(dy,dx)
+            
         else: return 0
 
     def Drag(self,x,y):                                         #This function will put the arms segment to the reach point and drag the parents
