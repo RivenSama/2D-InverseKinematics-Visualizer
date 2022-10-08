@@ -43,12 +43,6 @@ def CreateFig():
     
 
 
-
- 
-
-    
-
-
 if __name__ == '__main__':
     AddArmToLinker(5)
     AddArmToLinker(5)
