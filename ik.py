@@ -1,16 +1,12 @@
 import math
-from matplotlib.widgets import Slider
+from turtle import update
+from matplotlib.widgets import TextBox
 import numpy as np
 import matplotlib.pyplot as plt
 from Arm import Arm
 from ArmLinker import ArmLinker
 
 armLinker = ArmLinker(0,0)
-x = 20
-y = 20
-
-
-
 
 
 def AddArmToLinker(x):
@@ -23,41 +19,30 @@ def DrawArm():
         plt.plot([i.x, i.GetEndX()],[i.y,i.GetEndY()])
 
 
-
 def onclick(event):
-    armLinker.Reach(event.xdata,event.ydata)
 
+    armLinker.Reach(event.xdata,event.ydata)
     DrawCanvas()
     DrawArm()
     plt.draw()
     
     
-
-
-
-def DrawCanvas():
+def DrawCanvas(x=20,y=20):
     plt.cla()
     plt.axis([-x, x, -y, y])
+    print('x:: ',x)
     plt.grid(['both'])
-    
-
-def update(val):
-
-    DrawCanvas()
 
 
 def CreateFig():
-
-
-    
     fig, ax = plt.subplots()
-
-
-
     DrawCanvas()
     cid = fig.canvas.mpl_connect('button_press_event', onclick)
     DrawArm()
     plt.show()
+    
+
+
 
  
 
@@ -69,5 +54,8 @@ if __name__ == '__main__':
     AddArmToLinker(5)
     AddArmToLinker(5)
     CreateFig()
+
+
+
 
     
