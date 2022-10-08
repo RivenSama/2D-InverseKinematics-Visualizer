@@ -35,7 +35,8 @@ def DrawCanvas(x=20,y=20):
 
 
 def CreateFig():
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8,8))
+
     DrawCanvas()
     cid = fig.canvas.mpl_connect('button_press_event', onclick)
     DrawArm()
